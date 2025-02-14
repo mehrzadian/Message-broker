@@ -7,6 +7,7 @@ you can change the id of consumer to have multiple consumers. remeber the json f
 
 
 pub/sub pattern
+![two consumers](imgs/TwoConsumer.png)
 
 idempotent api endpoints.
 
@@ -16,9 +17,10 @@ if it could not publish it gives error with status code, trying in  intervals ag
 threadcount and ratelimit to control concurrency and resource limitation.
 
 persitancy is assured , all messages saved in .txt file till they are consumed.
-
+![messages](imgs/messages.png)
 by defalut producer and consumer will produce/listen to TestTopic , if you want to change that . you can either give api request to publish some message to another topic like "test3". and then make a request with consumer api to listen to test3.
 ![with another sub](imgs/test3.jpg)
+
 I have used this algorithm to have multiple consumers:
 ```bash
 
@@ -33,7 +35,9 @@ you can give your messages to publisher or it will produce random objects.
 
 logging system on information.
 plugging system implemented.
-
+![producer api](imgs/producerAPI.jpg)
+![consumer api](imgs/consumerAPI.jpg)
+![response](imgs/response.png)
 ## Refrences: 
 https://www.geeksforgeeks.org/what-is-pub-sub/
 \#
