@@ -1,16 +1,23 @@
 # Message-broker
 select .Broker and .API as startup projects.
+each project have some nuggets that you should install. click on each project to see them, then right click and go to nugget management to install them.
 
-
-after starting project, in swagger that is opend give request with /api/Messages/RegisterConsumer to "TestTopic", so the simulation get sarted. 
-you can change the id of conumer to have multiple consuemrs. remeber the json format of id should not change. 
+after starting project, in swagger that is opened give request with /api/Messages/RegisterConsumer to "TestTopic", so the simulation get started. 
+you can change the id of consumer to have multiple consumers. remeber the json format of id should not change. 
 
 
 pub/sub pattern
 
 idempotent api endpoints.
 
+retry mechanism 
+if it could not publish it gives error with status code, trying in  intervals again.
+
+threadcount and ratelimit to control concurrency and resource limitation.
+
 persitancy is assured , all messages saved in .txt file till they are consumed.
+
+by defalut producer and consumer will produce/listen to TestTopic , if you want to change that . you can either give api request to publish some message to another topic like "test3". and then make a request with consumer api to listen to test3.
 
 I have used this algorithm to have multiple consumers:
 ```bash
@@ -22,7 +29,10 @@ If the claim attempt succeeds (meaning no other consumer has claimed the message
 If the claim attempt fails (meaning another consumer has already claimed the message), the consumer does not process the message and moves on to the next message (or waits for a new message).
 Atomic Operations: The atomic operation could be an atomic increment instruction, such that the operation happens in only a step.
 ```
+you can give your messages to publisher or it will produce random objects.
 
+logging system on information.
+plugging system implemented.
 
 ## Refrences: 
 https://www.geeksforgeeks.org/what-is-pub-sub/
